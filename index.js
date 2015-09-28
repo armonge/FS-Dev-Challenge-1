@@ -36,3 +36,10 @@ server.route(serverObservable, '/api')
   data.res.write(jsonResponseText);
   data.res.end();
 });
+
+// respond to other unmatched urls
+serverObservable
+.subscribe(function(data) {
+  data.res.writeHead(404, {'Content-Type':'text/html'});
+  return data.res.end();
+});
