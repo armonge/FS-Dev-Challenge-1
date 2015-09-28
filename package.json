@@ -11,6 +11,7 @@
     "express": "~4.13.1",
     "jade": "~1.11.0",
     "morgan": "~1.6.1",
+    "rx-http-client": "0.0.2",
     "serve-favicon": "~2.3.0"
   }
 }
