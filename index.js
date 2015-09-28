@@ -33,8 +33,7 @@ server.route(serverObservable, '/api')
 .subscribe(function(data) {
   var jsonResponseText = JSON.stringify(bcValues);
   data.res.writeHead(200, {'Content-Type':'application/json'});
-  data.res.write(jsonResponseText);
-  data.res.end();
+  data.res.end(jsonResponseText);
 });
 
 // respond to other unmatched urls
