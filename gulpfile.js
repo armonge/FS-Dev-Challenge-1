@@ -6,8 +6,8 @@ gulp.task('default', function() {
   livereload.listen();
   nodemon({
     script: 'index.js',
-    watch: ['**/*.js'],
-    ext: 'json js',
+    watch: ['**/*.js', 'views/**/*.jade'],
+    ext: 'json js jade',
     ignore: ['node_modules/**/*'],
   })
   .on('restart', function(e) {
