@@ -10,6 +10,11 @@ const PORT = process.env.PORT || 5000;
 serverObservable.server.listen(PORT);
 console.log('Server listening on port: ' + PORT);
 
+// log the requests
+serverObservable
+.map(function(data) { return Date() +  ' - ' + data.req.url; })
+.subscribe(function(data) { console.log(data); });
+
 var bcValues = {};
 bcValuesObservable
 .subscribe(function(_bcValues) {
