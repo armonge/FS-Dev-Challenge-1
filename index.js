@@ -22,9 +22,17 @@ bcValuesObservable
 });
 
 // index requests
-serverObservable
-.filter(function(data) { return data.req.url === '/'; })
+server.route(serverObservable, '/')
 .subscribe(function(data) {
   var html = jade.compileFile('views/index.jade')(bcValues);
   data.res.end(html);
+});
+
+// api requests
+server.route(serverObservable, '/api')
+.subscribe(function(data) {
+  var jsonResponseText = JSON.stringify(bcValues);
+  data.res.writeHead(200, {'Content-Type':'application/json'});
+  data.res.write(jsonResponseText);
+  data.res.end();
 });
