@@ -15,26 +15,22 @@ serverObservable
 .map(function(data) { return Date() +  ' - ' + data.req.url; })
 .subscribe(function(data) { console.log(data); });
 
-var bcValues = {};
-bcValuesObservable
-.subscribe(function(_bcValues) {
-  bcValues = _bcValues;
-});
-
 // index requests
 server.route(serverObservable, '/')
-.subscribe(function(data) {
+.combineLatest(bcValuesObservable, function(data, bcValues) {
   var html = jade.compileFile('views/index.jade')(bcValues);
   data.res.end(html);
-});
+})
+.subscribe();
 
 // api requests
 server.route(serverObservable, '/api')
-.subscribe(function(data) {
+.combineLatest(bcValuesObservable, function(data, bcValues) {
   var jsonResponseText = JSON.stringify(bcValues);
   data.res.writeHead(200, {'Content-Type':'application/json'});
   data.res.end(jsonResponseText);
-});
+})
+.subscribe();
 
 // respond to other unmatched urls
 serverObservable
