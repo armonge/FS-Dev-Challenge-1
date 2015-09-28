@@ -5,7 +5,7 @@ var livereload = require('gulp-livereload');
 gulp.task('default', function() {
   livereload.listen();
   nodemon({
-    script: 'bin/index.js',
+    script: 'index.js',
     watch: ['**/*.js'],
     ext: 'json js',
     ignore: ['node_modules/**/*'],
