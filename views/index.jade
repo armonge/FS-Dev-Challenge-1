@@ -7,7 +7,6 @@ html
     script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js')
     script.
       Rx.Observable.interval(1000 * 10) // 10 seconds
-      .startWith(null) // start inmediately
       .flatMap(function() {
         return Rx.Observable.fromPromise($.getJSON('/api'))
       })
