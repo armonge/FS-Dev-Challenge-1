@@ -1,3 +1,33 @@
+# Project Description
+
+The application is a simple nodejs app that runs with gulp. It started like a express application but then moved to a custom http router built using RxJS
+
+The structure is pretty simple with the core of the code lying in 3 files
+
+```
+├── index.js
+├── lib
+│   ├── bitstamp.js
+│   └── server.js
+```
+
+**index.js** is entry point and where the routes are defined.
+**bistamp.js** handles all communication to with the bitstamp api.
+**server.js** some helper functions to start the http server with RxJs
+
+## Starting the application
+
+Assuming you have nodejs installed then you only need to do the following:
+
+```
+npm install -g gulp
+npm install
+gulp
+```
+
+The application will start running in port 5000 and you will see in the logs the values it fetches from the bistamp API or requests made
+
+
 # Project5Q Challenge 1
 
 Project5Q is the brain-child of some of the brightest minds in the industry. We believe that bored employees make boring products. This is why we're coming up with exciting new ways of combining crazy and innovative technologies to create amazing apps. 
